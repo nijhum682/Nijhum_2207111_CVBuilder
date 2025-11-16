@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -14,23 +15,20 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane style="-fx-background-color: #2ECC71;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.FormController">
-
     <children>
         <BorderPane prefHeight="650" prefWidth="700" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-
             <top>
                 <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="CV Generator" BorderPane.alignment="CENTER" />
             </top>
-
             <bottom>
-                <VBox spacing="10" BorderPane.alignment="CENTER">
+                <VBox prefHeight="63.0" prefWidth="1080.0" spacing="10" BorderPane.alignment="CENTER">
                     <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
-                    <Button fx:id="generateCVButton" maxWidth="200" onAction="#onGenerateCV" style="-fx-font-size: 16px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8 16;" text="Generate CV" />
+                    <Button fx:id="generateCVButton" alignment="CENTER" maxWidth="918.0" onAction="#onGenerateCV" prefHeight="42.0" prefWidth="918.0" style="-fx-font-size: 16px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8 16;" text="Generate CV" />
                 </VBox>
             </bottom>
-         <left>
+         <center>
                 <GridPane hgap="10" vgap="12" BorderPane.alignment="CENTER">
                     <padding>
                         <Insets bottom="20" left="20" right="20" top="20" />
@@ -45,14 +43,26 @@
                         <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                         <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="Father's Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="fatherNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                        <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                        <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="Mother's Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="motherNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <Label text="Photo:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <VBox prefHeight="29.0" prefWidth="714.0" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <ImageView fx:id="photoView" fitHeight="69.0" fitWidth="115.0" preserveRatio="true" />
+                            <Button fx:id="chooseImageButton" onAction="#onChooseImage" prefHeight="26.0" prefWidth="171.0" text="Choose Image" textAlignment="CENTER" />
+                        </VBox>
+
+                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
                             <TitledPane expanded="true" text="Address Details">
                                 <GridPane hgap="10" vgap="5">
                                     <columnConstraints>
@@ -71,17 +81,17 @@
                                     <TextField fx:id="districtField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Division:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="divisionField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                           <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints />
-                           </rowConstraints>
+
+                                    <rowConstraints>
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                    </rowConstraints>
                                 </GridPane>
                             </TitledPane>
                         </VBox>
 
-                        <Label text="Education:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-
+                        <Label text="Education:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
                             <TitledPane expanded="true" text="JSC">
                                 <GridPane hgap="10" vgap="5">
                                     <columnConstraints>
@@ -98,10 +108,10 @@
                                     <TextField fx:id="jscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="jscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                           <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints />
-                           </rowConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                    </rowConstraints>
                                 </GridPane>
                             </TitledPane>
 
@@ -121,10 +131,10 @@
                                     <TextField fx:id="sscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="sscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                           <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints />
-                           </rowConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                    </rowConstraints>
                                 </GridPane>
                             </TitledPane>
 
@@ -144,37 +154,39 @@
                                     <TextField fx:id="hscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="hscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                           <rowConstraints>
-                              <RowConstraints />
-                              <RowConstraints />
-                           </rowConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints />
+                                        <RowConstraints />
+                                    </rowConstraints>
                                 </GridPane>
                             </TitledPane>
-
                         </VBox>
 
-                        <Label text="Skills:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-                        <TextArea fx:id="skillsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Skills:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                        <TextArea fx:id="skillsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="8" />
 
-                        <Label text="Work Experience:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-                        <TextArea fx:id="experienceArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="Work Experience:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                        <TextArea fx:id="experienceArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="9" />
 
-                        <Label text="Projects:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-                        <TextArea fx:id="projectsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="Projects:" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                        <TextArea fx:id="projectsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+
                     </children>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-               </rowConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints maxHeight="25.600000000000023" minHeight="0.0" prefHeight="0.0" />
+                        <RowConstraints maxHeight="76.80000000000007" minHeight="51.200000000000045" prefHeight="76.80000000000007" />
+                        <RowConstraints />
+                    </rowConstraints>
                 </GridPane>
-         </left>
-
+         </center>
         </BorderPane>
     </children>
 </AnchorPane>
