@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="778.0" prefWidth="606.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.CvController">
+    <top>
+        <VBox spacing="10">
+            <HBox alignment="CENTER_RIGHT" prefHeight="115.0" prefWidth="557.0" spacing="20">
+                <padding>
+                    <Insets bottom="20" left="10" right="10" top="10" />
+                </padding>
+               <Label alignment="CENTER" contentDisplay="TOP" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-underline: true;" text="Curriculum Vitae">
+               <font>
+                  <Font name="Bodoni MT Black Italic" size="14.0" />
+               </font></Label>
+                <VBox spacing="5">
+                    <Label fx:id="fullNameLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                    <Label fx:id="emailLabel" style="-fx-font-size: 14px;" />
+                    <Label fx:id="phoneLabel" style="-fx-font-size: 14px;" />
+                </VBox>
+                <ImageView fx:id="photoView" fitHeight="120" fitWidth="120" nodeOrientation="RIGHT_TO_LEFT" preserveRatio="true" />
+            </HBox>
+        </VBox>
+
