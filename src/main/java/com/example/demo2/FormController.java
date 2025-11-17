@@ -99,11 +99,9 @@ public class FormController {
         Scene scene=new Scene(loader.load());
         CvController controller = loader.getController();
 
-
         String skillsText = String.join("\n", getAllSkills());
         String experienceText = String.join("\n", getAllExperience());
         String projectsText = String.join("\n", getAllProjects());
-
         controller.setCVData(
                 fullNameField.getText(),
                 fatherNameField.getText(),
@@ -131,7 +129,6 @@ public class FormController {
                 projectsText,
                 photoView.getImage()
         );
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();

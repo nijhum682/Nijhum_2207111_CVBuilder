@@ -4,22 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 public class CvController {
-
     @FXML private ImageView photoView;
-
     @FXML private Label fullNameLabel;
     @FXML private Label fatherNameLabel;
     @FXML private Label motherNameLabel;
     @FXML private Label emailLabel;
     @FXML private Label phoneLabel;
     @FXML private Label addressLabel;
-
     @FXML private Label jscLabel;
     @FXML private Label sscLabel;
     @FXML private Label hscLabel;
-
     @FXML private Label skillsLabel;
     @FXML private Label experienceLabel;
     @FXML private Label projectsLabel;
@@ -46,7 +41,6 @@ public class CvController {
         skillsLabel.setText(skills);
         experienceLabel.setText(experience);
         projectsLabel.setText(projects);
-
         if (photo != null) {
             photoView.setImage(photo);
         }
