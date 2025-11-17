@@ -3,128 +3,104 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #2ECC71;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.FormController">
-    <children>
-        <BorderPane prefHeight="650" prefWidth="700" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-            <top>
-                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="CV Generator" BorderPane.alignment="CENTER" />
-            </top>
-            <bottom>
-                <VBox prefHeight="63.0" prefWidth="1080.0" spacing="10" BorderPane.alignment="CENTER">
-                    <padding>
-                        <Insets bottom="10" left="10" right="10" top="10" />
-                    </padding>
-                    <Button fx:id="generateCVButton" alignment="CENTER" maxWidth="918.0" onAction="#onGenerateCV" prefHeight="42.0" prefWidth="918.0" style="-fx-font-size: 16px; -fx-background-color: #3498DB; -fx-text-fill: white; -fx-padding: 8 16;" text="Generate CV" />
-                </VBox>
-            </bottom>
-         <center>
-                <GridPane hgap="10" prefHeight="845.0" prefWidth="670.0" vgap="12" BorderPane.alignment="CENTER">
-                    <padding>
-                        <Insets bottom="20" left="20" right="20" top="20" />
-                    </padding>
-
-                    <columnConstraints>
-                        <ColumnConstraints percentWidth="30" />
-                        <ColumnConstraints percentWidth="70" />
-                    </columnConstraints>
-
-                    <children>
-                        <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-
-                        <Label text="Father's Name:" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextField fx:id="fatherNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-
-                        <Label prefHeight="18.0" prefWidth="106.0" text="Mother's Name:" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextField fx:id="motherNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-
-                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                        <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-                        <Label text="Photo:" GridPane.columnIndex="0" GridPane.rowIndex="5">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <VBox prefHeight="29.0" prefWidth="714.0" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                            <ImageView fx:id="photoView" fitHeight="69.0" fitWidth="115.0" preserveRatio="true" />
-                            <Button fx:id="chooseImageButton" onAction="#onChooseImage" prefHeight="26.0" prefWidth="171.0" text="Choose Image" textAlignment="CENTER" />
-                        </VBox>
-
-                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                            <TitledPane expanded="true" text="Address Details">
-                                <GridPane hgap="10" vgap="5">
-                                    <columnConstraints>
-                                        <ColumnConstraints percentWidth="25" />
-                                        <ColumnConstraints percentWidth="25" />
-                                        <ColumnConstraints percentWidth="25" />
-                                        <ColumnConstraints percentWidth="25" />
-                                    </columnConstraints>
-
+<BorderPane prefHeight="634.0" prefWidth="1149.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.FormController">
+   <top>
+      <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2C3E50;" text="CV Generator" BorderPane.alignment="CENTER" />
+   </top>
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="63" spacing="10" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+         </padding>
+         <children>
+            <Button fx:id="generateCVButton" alignment="CENTER" maxWidth="918" onAction="#onGenerateCV" prefHeight="42" prefWidth="918" style="-fx-font-size: 16px; -fx-background-color: #3498DB; -fx-text-fill: white;" text="Generate CV" />
+         </children>
+      </VBox>
+   </bottom>
+   <center>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <GridPane alignment="CENTER" hgap="10" vgap="12">
+               <padding>
+                  <Insets bottom="20" left="20" right="20" top="20" />
+               </padding>
+               <columnConstraints>
+                  <ColumnConstraints percentWidth="30.0" />
+                  <ColumnConstraints percentWidth="70.0" />
+               </columnConstraints>
+               <children>
+                  <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="fullNameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <Label text="Father's Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="fatherNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="Mother's Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="motherNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                  <TextField fx:id="phoneField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="Photo:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                  <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <children>
+                        <ImageView fx:id="photoView" fitHeight="69" fitWidth="115" preserveRatio="true" />
+                        <Button fx:id="chooseImageButton" onAction="#onChooseImage" prefHeight="26" prefWidth="171" text="Choose Image" />
+                     </children>
+                  </VBox>
+                  <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                  <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <children>
+                        <TitledPane expanded="true" text="Address Details">
+                           <content>
+                              <GridPane hgap="10" vgap="5">
+                                 <columnConstraints>
+                                    <ColumnConstraints percentWidth="25" />
+                                    <ColumnConstraints percentWidth="25" />
+                                    <ColumnConstraints percentWidth="25" />
+                                    <ColumnConstraints percentWidth="25" />
+                                 </columnConstraints>
+                                 <children>
                                     <Label text="Area:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                     <TextField fx:id="areaField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                     <Label text="Upazilla:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                                     <TextField fx:id="upazillaField" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-
                                     <Label text="District:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                                     <TextField fx:id="districtField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Division:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="divisionField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-
-                                    <rowConstraints>
-                                        <RowConstraints />
-                                        <RowConstraints />
-                                    </rowConstraints>
-                                </GridPane>
-                            </TitledPane>
-                        </VBox>
-
-                        <Label text="Education:" GridPane.columnIndex="0" GridPane.rowIndex="7">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                            <TitledPane expanded="true" text="JSC">
-                                <GridPane hgap="10" vgap="5">
-                                    <columnConstraints>
-                                        <ColumnConstraints percentWidth="40" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                    </columnConstraints>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+                  <Label text="Education:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                  <VBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <children>
+                        <TitledPane expanded="true" text="JSC">
+                           <content>
+                              <GridPane hgap="10" vgap="5">
+                                 <columnConstraints>
+                                    <ColumnConstraints percentWidth="40" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                 </columnConstraints>
+                                 <children>
                                     <Label text="School/College:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                     <TextField fx:id="jscSchoolField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                     <Label text="Passing Year:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
@@ -133,21 +109,24 @@
                                     <TextField fx:id="jscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="jscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <rowConstraints>
-                                        <RowConstraints />
-                                        <RowConstraints />
-                                    </rowConstraints>
-                                </GridPane>
-                            </TitledPane>
-
-                            <TitledPane expanded="true" text="SSC">
-                                <GridPane hgap="10" vgap="5">
-                                    <columnConstraints>
-                                        <ColumnConstraints percentWidth="40" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                    </columnConstraints>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane expanded="true" text="SSC">
+                           <content>
+                              <GridPane hgap="10" vgap="5">
+                                 <columnConstraints>
+                                    <ColumnConstraints percentWidth="40" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                 </columnConstraints>
+                                 <children>
                                     <Label text="School/College:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                     <TextField fx:id="sscSchoolField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                     <Label text="Passing Year:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
@@ -156,21 +135,24 @@
                                     <TextField fx:id="sscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="sscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <rowConstraints>
-                                        <RowConstraints />
-                                        <RowConstraints />
-                                    </rowConstraints>
-                                </GridPane>
-                            </TitledPane>
-
-                            <TitledPane expanded="true" text="HSC">
-                                <GridPane hgap="10" vgap="5">
-                                    <columnConstraints>
-                                        <ColumnConstraints percentWidth="40" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                        <ColumnConstraints percentWidth="20" />
-                                    </columnConstraints>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                        <TitledPane expanded="true" text="HSC">
+                           <content>
+                              <GridPane hgap="10" vgap="5">
+                                 <columnConstraints>
+                                    <ColumnConstraints percentWidth="40" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                    <ColumnConstraints percentWidth="20" />
+                                 </columnConstraints>
+                                 <children>
                                     <Label text="College:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                                     <TextField fx:id="hscCollegeField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
                                     <Label text="Passing Year:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
@@ -179,48 +161,53 @@
                                     <TextField fx:id="hscBoardField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="GPA:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                     <TextField fx:id="hscGPAField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                    <rowConstraints>
-                                        <RowConstraints />
-                                        <RowConstraints />
-                                    </rowConstraints>
-                                </GridPane>
-                            </TitledPane>
-                        </VBox>
-
-                        <Label text="Skills:" GridPane.columnIndex="0" GridPane.rowIndex="8">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextArea fx:id="skillsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-
-                        <Label text="Work Experience:" GridPane.columnIndex="0" GridPane.rowIndex="9">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextArea fx:id="experienceArea" prefHeight="38.0" prefRowCount="3" prefWidth="455.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-
-                        <Label text="Projects:" GridPane.columnIndex="0" GridPane.rowIndex="10">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-                        <TextArea fx:id="projectsArea" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-
-                    </children>
-                    <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints maxHeight="25.600000000000023" minHeight="0.0" prefHeight="0.0" />
-                        <RowConstraints maxHeight="76.80000000000007" minHeight="51.200000000000045" prefHeight="76.80000000000007" />
-                        <RowConstraints />
-                    </rowConstraints>
-                </GridPane>
-         </center>
-        </BorderPane>
-    </children>
-</AnchorPane>
+                                 </children>
+                                 <rowConstraints>
+                                    <RowConstraints />
+                                    <RowConstraints />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+                  <Label text="Skills:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                  <VBox fx:id="skillsBox" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <children>
+                        <TextArea prefHeight="17.0" prefRowCount="3" prefWidth="763.0" />
+                        <Button onAction="#onAddSkill" text="Add More Skills" />
+                     </children>
+                  </VBox>
+                  <Label text="Work Experience:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                  <VBox fx:id="experienceBox" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <children>
+                        <TextArea prefHeight="0.0" prefRowCount="3" prefWidth="763.0" />
+                        <Button onAction="#onAddExperience" text="Add More Experience" />
+                     </children>
+                  </VBox>
+                  <Label text="Projects:" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                  <VBox fx:id="projectsBox" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <children>
+                        <TextArea prefHeight="0.0" prefRowCount="3" prefWidth="763.0" />
+                        <Button onAction="#onAddProject" text="Add More Projects" />
+                     </children>
+                  </VBox>
+               </children>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
