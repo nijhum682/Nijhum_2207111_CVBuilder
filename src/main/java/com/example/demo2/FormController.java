@@ -34,6 +34,9 @@ public class FormController {
     @FXML private TextField sscSchoolField, sscYearField, sscBoardField, sscGPAField;
     @FXML private TextField hscCollegeField, hscYearField, hscBoardField, hscGPAField;
 
+    // New Graduation Fields
+    @FXML private TextField graduationUniversityField, graduationDepartmentField, graduationYearField, graduationCGPAField;
+
     @FXML private VBox skillsBox;
     @FXML private VBox experienceBox;
     @FXML private VBox projectsBox;
@@ -96,12 +99,13 @@ public class FormController {
     @FXML
     private void onGenerateCV(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cv-show.fxml"));
-        Scene scene=new Scene(loader.load());
+        Scene scene = new Scene(loader.load());
         CvController controller = loader.getController();
 
         String skillsText = String.join("\n", getAllSkills());
         String experienceText = String.join("\n", getAllExperience());
         String projectsText = String.join("\n", getAllProjects());
+
         controller.setCVData(
                 fullNameField.getText(),
                 fatherNameField.getText(),
@@ -124,11 +128,16 @@ public class FormController {
                 hscYearField.getText(),
                 hscBoardField.getText(),
                 hscGPAField.getText(),
+                graduationUniversityField.getText(),
+                graduationDepartmentField.getText(),
+                graduationYearField.getText(),
+                graduationCGPAField.getText(),
                 skillsText,
                 experienceText,
                 projectsText,
                 photoView.getImage()
         );
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
