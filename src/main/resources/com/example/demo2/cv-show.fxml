@@ -6,76 +6,146 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/17"
-          xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="com.example.demo2.CvController"
-          hgap="20" vgap="15">
+<GridPane alignment="CENTER" hgap="20" vgap="15" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.CvController">
 
     <columnConstraints>
-        <ColumnConstraints minWidth="250"/>
-        <ColumnConstraints minWidth="350"/>
+        <ColumnConstraints minWidth="250" />
+        <ColumnConstraints minWidth="350" />
     </columnConstraints>
 
-    <Label text="CV" style="-fx-font-size:32px; -fx-font-weight:bold;"
-           GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+    <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size:32px; -fx-font-weight:bold;" text="CURRICULAM VITAE" GridPane.columnSpan="2" GridPane.rowIndex="0">
+      <GridPane.margin>
+         <Insets left="50.0" />
+      </GridPane.margin></Label>
 
     <VBox spacing="12" GridPane.rowIndex="1">
-        <Label text="Personal data" style="-fx-font-size:20px; -fx-font-weight:bold;"/>
+        <Label style="-fx-font-size:20px; -fx-font-weight:bold;" text="PERSONAL DATA:">
+         <VBox.margin>
+            <Insets left="20.0" />
+         </VBox.margin></Label>
         <VBox spacing="6">
             <HBox spacing="8">
-                <Label text="Full Name:"/>
-                <Label fx:id="fullNameLabel"/>
+                <Label text="Full Name:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="fullNameLabel" />
             </HBox>
             <HBox spacing="8">
-                <Label text="Father's Name:"/>
-                <Label fx:id="fatherNameLabel"/>
+                <Label text="Father's Name:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="fatherNameLabel" />
             </HBox>
             <HBox spacing="8">
-                <Label text="Mother's Name:"/>
-                <Label fx:id="motherNameLabel"/>
+                <Label text="Mother's Name:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="motherNameLabel" />
             </HBox>
             <HBox spacing="8">
-                <Label text="Email:"/>
-                <Label fx:id="emailLabel"/>
+                <Label text="Email:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="emailLabel" />
             </HBox>
             <HBox spacing="8">
-                <Label text="Phone:"/>
-                <Label fx:id="phoneLabel"/>
+                <Label text="Phone:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="phoneLabel" />
             </HBox>
             <HBox spacing="8">
-                <Label text="Address:"/>
-                <Label fx:id="addressLabel" wrapText="true"/>
+                <Label text="Address:">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+                <Label fx:id="addressLabel" wrapText="true" />
             </HBox>
         </VBox>
     </VBox>
 
-    <VBox GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="TOP_RIGHT">
-        <ImageView fx:id="photoView" fitWidth="160" fitHeight="160" preserveRatio="true"/>
+    <VBox alignment="TOP_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <ImageView fx:id="photoView" fitHeight="160" fitWidth="160" preserveRatio="true" />
     </VBox>
 
-    <VBox spacing="12" GridPane.rowIndex="2" GridPane.columnSpan="2">
-        <Label text="Education" style="-fx-font-size:20px; -fx-font-weight:bold;"/>
+    <VBox spacing="12" GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <Label style="-fx-font-size:20px; -fx-font-weight:bold;" text="EDUCATION:">
+         <VBox.margin>
+            <Insets left="20.0" />
+         </VBox.margin></Label>
         <VBox spacing="6">
-            <Label fx:id="jscLabel"/>
-            <Label fx:id="sscLabel"/>
-            <Label fx:id="hscLabel"/>
+            <Label fx:id="jscLabel" />
+            <Label fx:id="sscLabel" />
+            <Label fx:id="hscLabel" />
         </VBox>
     </VBox>
 
-    <VBox spacing="12" GridPane.rowIndex="3" GridPane.columnSpan="2">
-        <Label text="Skills &amp; Experience" style="-fx-font-size:20px; -fx-font-weight:bold;"/>
+    <VBox spacing="12" GridPane.columnSpan="2" GridPane.rowIndex="3">
+        <Label style="-fx-font-size:20px; -fx-font-weight:bold;" text="SKILLS &amp; EXPERIENCES:">
+         <VBox.margin>
+            <Insets left="20.0" />
+         </VBox.margin></Label>
         <VBox spacing="6">
-            <Label text="Skills:"/>
-            <Label fx:id="skillsLabel" wrapText="true"/>
+            <Label text="Skills:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" />
+            </VBox.margin></Label>
+            <Label fx:id="skillsLabel" wrapText="true" />
 
-            <Label text="Experience:"/>
-            <Label fx:id="experienceLabel" wrapText="true"/>
+            <Label text="Experience:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" />
+            </VBox.margin></Label>
+            <Label fx:id="experienceLabel" wrapText="true" />
 
-            <Label text="Projects:"/>
-            <Label fx:id="projectsLabel" wrapText="true"/>
+            <Label text="Projects:">
+            <font>
+               <Font name="System Bold Italic" size="12.0" />
+            </font>
+            <VBox.margin>
+               <Insets left="30.0" />
+            </VBox.margin></Label>
+            <Label fx:id="projectsLabel" wrapText="true" />
         </VBox>
     </VBox>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
 
 </GridPane>
