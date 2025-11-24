@@ -10,6 +10,7 @@ module com.example.demo2 {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens com.example.demo2 to javafx.fxml;
     exports com.example.demo2;

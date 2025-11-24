@@ -290,7 +290,6 @@
                         <RowConstraints />
                         <RowConstraints />
                     </rowConstraints>
-
                 </GridPane>
             </content>
         </ScrollPane>
