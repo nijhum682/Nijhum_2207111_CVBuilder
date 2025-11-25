@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.demo2.DataBaseController"
+            fitToWidth="true" fitToHeight="true" pannable="true">
+
+    <content>
+        <AnchorPane prefWidth="2000" prefHeight="1200">
+
+            <TableView fx:id="cvTable" layoutX="20" layoutY="20" prefWidth="1900" prefHeight="1100">
+
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
+                    <TableColumn fx:id="colFullName" text="Full Name" prefWidth="200"/>
+                    <TableColumn fx:id="colFatherName" text="Father Name" prefWidth="200"/>
+                    <TableColumn fx:id="colMotherName" text="Mother Name" prefWidth="200"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
+                    <TableColumn fx:id="colPhotoPath" text="Photo" prefWidth="150"/>
+
+                    <TableColumn fx:id="colAddress" text="Address" prefWidth="300"/>
+                    <TableColumn fx:id="colEducation" text="Education" prefWidth="400"/>
+
+                    <TableColumn fx:id="colSkills" text="Skills" prefWidth="300"/>
+                    <TableColumn fx:id="colExperience" text="Experience" prefWidth="300"/>
+                    <TableColumn fx:id="colProjects" text="Projects" prefWidth="300"/>
+                </columns>
+
+            </TableView>
+
+        </AnchorPane>
+    </content>
+
+</ScrollPane>
