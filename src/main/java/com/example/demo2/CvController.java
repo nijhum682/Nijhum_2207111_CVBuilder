@@ -1,83 +1,77 @@
 package com.example.demo2;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class CvController {
 
     @FXML private ImageView photoView;
+    @FXML private Label fullNameLabel, fatherNameLabel, motherNameLabel, emailLabel, phoneLabel;
+    @FXML private Label addressLabel, jscLabel, sscLabel, hscLabel, graduationLabel;
+    @FXML private Label skillsLabel, experienceLabel, projectsLabel;
 
-    @FXML private Label fullNameLabel;
-    @FXML private Label fatherNameLabel;
-    @FXML private Label motherNameLabel;
-    @FXML private Label emailLabel;
-    @FXML private Label phoneLabel;
-    @FXML private Label addressLabel;
+    @FXML
+    public void showCV(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("database-show.fxml"));
+        Scene scene = new Scene(loader.load());
 
-    @FXML private Label jscLabel;
-    @FXML private Label sscLabel;
-    @FXML private Label hscLabel;
-    @FXML private Label graduationLabel;
+        Stage stage = (Stage) photoView.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
-    @FXML private Label skillsLabel;
-    @FXML private Label experienceLabel;
-    @FXML private Label projectsLabel;
 
-    public void setCVData(
-            String fullName, String fatherName, String motherName,
-            String email, String phone, String area, String upazilla, String district, String division,
-            String jscSchool, String jscYear, String jscBoard, String jscGPA,
-            String sscSchool, String sscYear, String sscBoard, String sscGPA,
-            String hscCollege, String hscYear, String hscBoard, String hscGPA,
-            String graduationUniversity, String graduationDepartment, String graduationYear, String graduationCGPA,
-            String skills, String experience, String projects, Image photo) {
+    public void setCvData(Info info) {
+        fullNameLabel.setText(info.getFullName());
+        fatherNameLabel.setText(info.getFatherName());
+        motherNameLabel.setText(info.getMotherName());
+        emailLabel.setText(info.getEmail());
+        phoneLabel.setText(info.getPhone());
+        addressLabel.setText("Area: " + info.getArea() + ", Upazilla: " + info.getUpazilla() +
+                ", District: " + info.getDistrict() + ", Division: " + info.getDivision());
 
-        fullNameLabel.setText(fullName);
-        fatherNameLabel.setText(fatherName);
-        motherNameLabel.setText(motherName);
-        emailLabel.setText(email);
-        phoneLabel.setText(phone);
-        addressLabel.setText("Area: " + area + ", Upazilla: " + upazilla + ", District: " + district + ", Division: " + division);
+        jscLabel.setText("JSC: " + info.getJscSchool() + " | GPA: " + info.getJscGpa());
+        sscLabel.setText("SSC: " + info.getSscSchool() + " | GPA: " + info.getSscGpa());
+        hscLabel.setText("HSC: " + info.getHscCollege() + " | GPA: " + info.getHscGpa());
+        graduationLabel.setText("Graduation: " + info.getGraduationUniversity() + " | CGPA: " + info.getGraduationCgpa());
 
-        jscLabel.setText(
-                "Institution: " + jscSchool +
-                        "  |  Exam: JSC" +
-                        "  |  Board: " + jscBoard +
-                        "  |  GPA: " + jscGPA +
-                        "  |  Year: " + jscYear
-        );
+        skillsLabel.setText(String.join(", ", info.getSkills()));
+        experienceLabel.setText(String.join(", ", info.getExperience()));
+        projectsLabel.setText(String.join(", ", info.getProjects()));
 
-        sscLabel.setText(
-                "Institution: " + sscSchool +
-                        "  |  Exam: SSC" +
-                        "  |  Board: " + sscBoard +
-                        "  |  GPA: " + sscGPA +
-                        "  |  Year: " + sscYear
-        );
+        if (info.getPhotoPath() != null && !info.getPhotoPath().isEmpty()) {
+            File file = new File(info.getPhotoPath());
+            if(file.exists()){
+                photoView.setImage(new Image(file.toURI().toString()));
+            }
+        }
+    }
 
-        hscLabel.setText(
-                "Institution: " + hscCollege +
-                        "  |  Exam: HSC" +
-                        "  |  Board: " + hscBoard +
-                        "  |  GPA: " + hscGPA +
-                        "  |  Year: " + hscYear
-        );
+    public static void showPreview(Info info) {
+        try {
+            FXMLLoader loader = new FXMLLoader(CvController.class.getResource("cv-show.fxml"));
+            AnchorPane pane = loader.load();
+            CvController controller = loader.getController();
+            controller.setCvData(info);
 
-        graduationLabel.setText(
-                "University: " + graduationUniversity +
-                        "  |  Department: " + graduationDepartment +
-                        "  |  CGPA: " + graduationCGPA +
-                        "  |  Year: " + graduationYear
-        );
-
-        skillsLabel.setText(skills);
-        experienceLabel.setText(experience);
-        projectsLabel.setText(projects);
-
-        if (photo != null) {
-            photoView.setImage(photo);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(pane));
+            stage.setTitle("CV Preview");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

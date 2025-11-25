@@ -2,37 +2,34 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<ScrollPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.demo2.DataBaseController"
-            fitToWidth="true" fitToHeight="true" pannable="true">
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.demo2.DataBaseController"
+      spacing="10" prefWidth="1200" prefHeight="700">
 
-    <content>
-        <AnchorPane prefWidth="2000" prefHeight="1200">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
 
-            <TableView fx:id="cvTable" layoutX="20" layoutY="20" prefWidth="1900" prefHeight="1100">
+    <TableView fx:id="cvTable" VBox.vgrow="ALWAYS">
 
-                <columns>
-                    <TableColumn fx:id="colId" text="ID" prefWidth="80"/>
-                    <TableColumn fx:id="colFullName" text="Full Name" prefWidth="200"/>
-                    <TableColumn fx:id="colFatherName" text="Father Name" prefWidth="200"/>
-                    <TableColumn fx:id="colMotherName" text="Mother Name" prefWidth="200"/>
-                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
-                    <TableColumn fx:id="colPhone" text="Phone" prefWidth="150"/>
-                    <TableColumn fx:id="colPhotoPath" text="Photo" prefWidth="150"/>
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
+            <TableColumn fx:id="colFullName" text="Full Name" prefWidth="120"/>
+            <TableColumn fx:id="colFatherName" text="Father Name" prefWidth="120"/>
+            <TableColumn fx:id="colMotherName" text="Mother Name" prefWidth="120"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="150"/>
+            <TableColumn fx:id="colPhone" text="Phone" prefWidth="100"/>
+            <TableColumn fx:id="colPhotoPath" text="Photo" prefWidth="80"/>
+            <TableColumn fx:id="colAddress" text="Address" prefWidth="200"/>
+            <TableColumn fx:id="colEducation" text="Education" prefWidth="200"/>
+            <TableColumn fx:id="colSkills" text="Skills" prefWidth="150"/>
+            <TableColumn fx:id="colExperience" text="Experience" prefWidth="150"/>
+            <TableColumn fx:id="colProjects" text="Projects" prefWidth="150"/>
+        </columns>
 
-                    <TableColumn fx:id="colAddress" text="Address" prefWidth="300"/>
-                    <TableColumn fx:id="colEducation" text="Education" prefWidth="400"/>
+    </TableView>
 
-                    <TableColumn fx:id="colSkills" text="Skills" prefWidth="300"/>
-                    <TableColumn fx:id="colExperience" text="Experience" prefWidth="300"/>
-                    <TableColumn fx:id="colProjects" text="Projects" prefWidth="300"/>
-                </columns>
-
-            </TableView>
-
-        </AnchorPane>
-    </content>
-
-</ScrollPane>
+</VBox>

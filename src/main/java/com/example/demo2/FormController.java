@@ -148,41 +148,12 @@ public class FormController {
                 alert.setContentText("CV saved successfully!");
                 alert.showAndWait();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("cv-show.fxml"));
                 try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("cv-show.fxml"));
                     Scene scene = new Scene(loader.load());
                     CvController controller = loader.getController();
-                    controller.setCVData(
-                            info.getFullName(),
-                            info.getFatherName(),
-                            info.getMotherName(),
-                            info.getEmail(),
-                            info.getPhone(),
-                            info.getArea(),
-                            info.getUpazilla(),
-                            info.getDistrict(),
-                            info.getDivision(),
-                            info.getJscSchool(),
-                            info.getJscYear(),
-                            info.getJscBoard(),
-                            info.getJscGpa(),
-                            info.getSscSchool(),
-                            info.getSscYear(),
-                            info.getSscBoard(),
-                            info.getSscGpa(),
-                            info.getHscCollege(),
-                            info.getHscYear(),
-                            info.getHscBoard(),
-                            info.getHscGpa(),
-                            info.getGraduationUniversity(),
-                            info.getGraduationDepartment(),
-                            info.getGraduationYear(),
-                            info.getGraduationCgpa(),
-                            String.join("\n", info.getSkills()),
-                            String.join("\n", info.getExperience()),
-                            String.join("\n", info.getProjects()),
-                            photoView.getImage()
-                    );
+                    controller.setCvData(info);
+
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.setScene(scene);
                     stage.show();
