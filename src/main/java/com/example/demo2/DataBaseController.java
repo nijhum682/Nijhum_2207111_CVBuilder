@@ -9,7 +9,6 @@ import javafx.scene.control.*;
 import java.util.List;
 
 public class DataBaseController {
-
     @FXML
     private TableView<Info> cvTable;
 
@@ -39,13 +38,14 @@ public class DataBaseController {
     private TableColumn<Info, String> colProjects;
     @FXML
     private TableColumn<Info, Void> colDelete;
+    @FXML
+    private TableColumn<Info, Void> colPreview;
 
     private DatabaseHelper helper;
 
     @FXML
     public void initialize() {
         helper = new DatabaseHelper();
-
         colId.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getId()));
         colFullName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFullName()));
         colFatherName.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFatherName()));
@@ -71,6 +71,7 @@ public class DataBaseController {
         colProjects.setCellValueFactory(cellData -> new SimpleStringProperty(String.join(", ", cellData.getValue().getProjects())));
 
         addDeleteButtonToTable();
+        addPreviewButtonToTable();
         loadTableData();
     }
 
@@ -96,6 +97,55 @@ public class DataBaseController {
                 }
             }
         });
+    }
+
+    private void addPreviewButtonToTable() {
+        colPreview.setCellFactory(param -> new TableCell<>() {
+            private final Button previewBtn = new Button("Preview");
+
+            {
+                previewBtn.setOnAction(event -> {
+                    Info info = getTableView().getItems().get(getIndex());
+                    showPreviewCV(info);
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(previewBtn);
+                }
+            }
+        });
+    }
+
+    private void showPreviewCV(Info info) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("CV Preview");
+
+        StringBuilder content = new StringBuilder();
+        content.append("Full Name: ").append(info.getFullName()).append("\n");
+        content.append("Father Name: ").append(info.getFatherName()).append("\n");
+        content.append("Mother Name: ").append(info.getMotherName()).append("\n");
+        content.append("Email: ").append(info.getEmail()).append("\n");
+        content.append("Phone: ").append(info.getPhone()).append("\n");
+        content.append("Address: ").append(info.getArea()).append(", ")
+                .append(info.getUpazilla()).append(", ")
+                .append(info.getDistrict()).append(", ")
+                .append(info.getDivision()).append("\n");
+        content.append("Education: JSC: ").append(info.getJscSchool()).append(" (").append(info.getJscYear()).append("), ")
+                .append("SSC: ").append(info.getSscSchool()).append(" (").append(info.getSscYear()).append("), ")
+                .append("HSC: ").append(info.getHscCollege()).append(" (").append(info.getHscYear()).append("), ")
+                .append("Graduation: ").append(info.getGraduationUniversity()).append(" (").append(info.getGraduationYear()).append(")\n");
+        content.append("Skills: ").append(String.join(", ", info.getSkills())).append("\n");
+        content.append("Experience: ").append(String.join(", ", info.getExperience())).append("\n");
+        content.append("Projects: ").append(String.join(", ", info.getProjects()));
+
+        alert.setContentText(content.toString());
+        alert.showAndWait();
     }
 
     private void loadTableData() {

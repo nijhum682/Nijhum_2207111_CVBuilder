@@ -26,6 +26,7 @@
             <TableColumn fx:id="colSkills" text="Skills" prefWidth="150"/>
             <TableColumn fx:id="colExperience" text="Experience" prefWidth="150"/>
             <TableColumn fx:id="colProjects" text="Projects" prefWidth="150"/>
+            <TableColumn fx:id="colPreview" text="Preview" prefWidth="80"/>
             <TableColumn fx:id="colDelete" text="Delete" prefWidth="80"/>
         </columns>
     </TableView>
