@@ -2,232 +2,205 @@ package com.example.demo2;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CVDatabaseHelper {
-    private static final String DB_URL = "jdbc:sqlite:cv_database.db";
+    private static final String URL = "jdbc:sqlite:cvdata.db";
 
     public CVDatabaseHelper() {
-        String createTableSQL = """
-                CREATE TABLE IF NOT EXISTS cv_info (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    full_name TEXT,
-                    father_name TEXT,
-                    mother_name TEXT,
-                    email TEXT,
-                    phone TEXT,
-                    photo_path TEXT,
-                    area TEXT,
-                    upazilla TEXT,
-                    district TEXT,
-                    division TEXT,
-                    jsc_school TEXT,
-                    jsc_year TEXT,
-                    jsc_board TEXT,
-                    jsc_gpa TEXT,
-                    ssc_school TEXT,
-                    ssc_year TEXT,
-                    ssc_board TEXT,
-                    ssc_gpa TEXT,
-                    hsc_college TEXT,
-                    hsc_year TEXT,
-                    hsc_board TEXT,
-                    hsc_gpa TEXT,
-                    graduation_university TEXT,
-                    graduation_department TEXT,
-                    graduation_year TEXT,
-                    graduation_cgpa TEXT,
-                    skills TEXT,
-                    experience TEXT,
-                    projects TEXT
-                );
-                """;
-
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(createTableSQL);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        try (Connection conn = DriverManager.getConnection(URL)) {
+            String sql = "CREATE TABLE IF NOT EXISTS info (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "fullName TEXT," +
+                    "fatherName TEXT," +
+                    "motherName TEXT," +
+                    "email TEXT," +
+                    "phone TEXT," +
+                    "photoPath TEXT," +
+                    "area TEXT," +
+                    "upazilla TEXT," +
+                    "district TEXT," +
+                    "division TEXT," +
+                    "jscSchool TEXT," +
+                    "jscYear TEXT," +
+                    "jscBoard TEXT," +
+                    "jscGpa TEXT," +
+                    "sscSchool TEXT," +
+                    "sscYear TEXT," +
+                    "sscBoard TEXT," +
+                    "sscGpa TEXT," +
+                    "hscCollege TEXT," +
+                    "hscYear TEXT," +
+                    "hscBoard TEXT," +
+                    "hscGpa TEXT," +
+                    "graduationUniversity TEXT," +
+                    "graduationDepartment TEXT," +
+                    "graduationYear TEXT," +
+                    "graduationCgpa TEXT," +
+                    "skills TEXT," +
+                    "experience TEXT," +
+                    "projects TEXT" +
+                    ")";
+            conn.createStatement().execute(sql);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
-    public boolean insertCV(Info info) {
-        String insertSQL = """
-                INSERT INTO cv_info (
-                    full_name, father_name, mother_name, email, phone, photo_path,
-                    area, upazilla, district, division,
-                    jsc_school, jsc_year, jsc_board, jsc_gpa,
-                    ssc_school, ssc_year, ssc_board, ssc_gpa,
-                    hsc_college, hsc_year, hsc_board, hsc_gpa,
-                    graduation_university, graduation_department, graduation_year, graduation_cgpa,
-                    skills, experience, projects
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """;
+    public boolean insertCV(Info i) {
+        String sql = "INSERT INTO info (" +
+                "fullName,fatherName,motherName,email,phone,photoPath,area,upazilla,district,division," +
+                "jscSchool,jscYear,jscBoard,jscGpa,sscSchool,sscYear,sscBoard,sscGpa," +
+                "hscCollege,hscYear,hscBoard,hscGpa,graduationUniversity,graduationDepartment," +
+                "graduationYear,graduationCgpa,skills,experience,projects) " +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, info.getFullName());
-            pstmt.setString(2, info.getFatherName());
-            pstmt.setString(3, info.getMotherName());
-            pstmt.setString(4, info.getEmail());
-            pstmt.setString(5, info.getPhone());
-            pstmt.setString(6, info.getPhotoPath());
-            pstmt.setString(7, info.getArea());
-            pstmt.setString(8, info.getUpazilla());
-            pstmt.setString(9, info.getDistrict());
-            pstmt.setString(10, info.getDivision());
-            pstmt.setString(11, info.getJscSchool());
-            pstmt.setString(12, info.getJscYear());
-            pstmt.setString(13, info.getJscBoard());
-            pstmt.setString(14, info.getJscGpa());
-            pstmt.setString(15, info.getSscSchool());
-            pstmt.setString(16, info.getSscYear());
-            pstmt.setString(17, info.getSscBoard());
-            pstmt.setString(18, info.getSscGpa());
-            pstmt.setString(19, info.getHscCollege());
-            pstmt.setString(20, info.getHscYear());
-            pstmt.setString(21, info.getHscBoard());
-            pstmt.setString(22, info.getHscGpa());
-            pstmt.setString(23, info.getGraduationUniversity());
-            pstmt.setString(24, info.getGraduationDepartment());
-            pstmt.setString(25, info.getGraduationYear());
-            pstmt.setString(26, info.getGraduationCgpa());
-            pstmt.setString(27, String.join(",", info.getSkills()));
-            pstmt.setString(28, String.join(",", info.getExperience()));
-            pstmt.setString(29, String.join(",", info.getProjects()));
+            stmt.setString(1, i.getFullName());
+            stmt.setString(2, i.getFatherName());
+            stmt.setString(3, i.getMotherName());
+            stmt.setString(4, i.getEmail());
+            stmt.setString(5, i.getPhone());
+            stmt.setString(6, i.getPhotoPath());
+            stmt.setString(7, i.getArea());
+            stmt.setString(8, i.getUpazilla());
+            stmt.setString(9, i.getDistrict());
+            stmt.setString(10, i.getDivision());
+            stmt.setString(11, i.getJscSchool());
+            stmt.setString(12, i.getJscYear());
+            stmt.setString(13, i.getJscBoard());
+            stmt.setString(14, i.getJscGpa());
+            stmt.setString(15, i.getSscSchool());
+            stmt.setString(16, i.getSscYear());
+            stmt.setString(17, i.getSscBoard());
+            stmt.setString(18, i.getSscGpa());
+            stmt.setString(19, i.getHscCollege());
+            stmt.setString(20, i.getHscYear());
+            stmt.setString(21, i.getHscBoard());
+            stmt.setString(22, i.getHscGpa());
+            stmt.setString(23, i.getGraduationUniversity());
+            stmt.setString(24, i.getGraduationDepartment());
+            stmt.setString(25, i.getGraduationYear());
+            stmt.setString(26, i.getGraduationCgpa());
+            stmt.setString(27, String.join(",", i.getSkills()));
+            stmt.setString(28, String.join(",", i.getExperience()));
+            stmt.setString(29, String.join(",", i.getProjects()));
 
-            pstmt.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean updateCV(Info i) {
+        String sql = "UPDATE info SET " +
+                "fullName=?,fatherName=?,motherName=?,email=?,phone=?,photoPath=?,area=?,upazilla=?,district=?,division=?," +
+                "jscSchool=?,jscYear=?,jscBoard=?,jscGpa=?,sscSchool=?,sscYear=?,sscBoard=?,sscGpa=?," +
+                "hscCollege=?,hscYear=?,hscBoard=?,hscGpa=?,graduationUniversity=?,graduationDepartment=?," +
+                "graduationYear=?,graduationCgpa=?,skills=?,experience=?,projects=? WHERE id=?";
+
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, i.getFullName());
+            stmt.setString(2, i.getFatherName());
+            stmt.setString(3, i.getMotherName());
+            stmt.setString(4, i.getEmail());
+            stmt.setString(5, i.getPhone());
+            stmt.setString(6, i.getPhotoPath());
+            stmt.setString(7, i.getArea());
+            stmt.setString(8, i.getUpazilla());
+            stmt.setString(9, i.getDistrict());
+            stmt.setString(10, i.getDivision());
+            stmt.setString(11, i.getJscSchool());
+            stmt.setString(12, i.getJscYear());
+            stmt.setString(13, i.getJscBoard());
+            stmt.setString(14, i.getJscGpa());
+            stmt.setString(15, i.getSscSchool());
+            stmt.setString(16, i.getSscYear());
+            stmt.setString(17, i.getSscBoard());
+            stmt.setString(18, i.getSscGpa());
+            stmt.setString(19, i.getHscCollege());
+            stmt.setString(20, i.getHscYear());
+            stmt.setString(21, i.getHscBoard());
+            stmt.setString(22, i.getHscGpa());
+            stmt.setString(23, i.getGraduationUniversity());
+            stmt.setString(24, i.getGraduationDepartment());
+            stmt.setString(25, i.getGraduationYear());
+            stmt.setString(26, i.getGraduationCgpa());
+            stmt.setString(27, String.join(",", i.getSkills()));
+            stmt.setString(28, String.join(",", i.getExperience()));
+            stmt.setString(29, String.join(",", i.getProjects()));
+            stmt.setInt(30, i.getId());
+
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean deleteCV(int id) {
+        String sql = "DELETE FROM info WHERE id=?";
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
     public List<Info> getAllCVs() {
-        List<Info> cvList = new ArrayList<>();
-        String query = "SELECT * FROM cv_info";
-
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+        List<Info> list = new ArrayList<>();
+        String sql = "SELECT * FROM info";
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                List<String> skills = Arrays.asList(rs.getString("skills").split(","));
-                List<String> experience = Arrays.asList(rs.getString("experience").split(","));
-                List<String> projects = Arrays.asList(rs.getString("projects").split(","));
+                List<String> skills = rs.getString("skills").isEmpty() ? new ArrayList<>() : List.of(rs.getString("skills").split(","));
+                List<String> exp = rs.getString("experience").isEmpty() ? new ArrayList<>() : List.of(rs.getString("experience").split(","));
+                List<String> pro = rs.getString("projects").isEmpty() ? new ArrayList<>() : List.of(rs.getString("projects").split(","));
 
-                Info info = new Info(
+                Info i = new Info(
                         rs.getInt("id"),
-                        rs.getString("full_name"),
-                        rs.getString("father_name"),
-                        rs.getString("mother_name"),
+                        rs.getString("fullName"),
+                        rs.getString("fatherName"),
+                        rs.getString("motherName"),
                         rs.getString("email"),
                         rs.getString("phone"),
-                        rs.getString("photo_path"),
+                        rs.getString("photoPath"),
                         rs.getString("area"),
                         rs.getString("upazilla"),
                         rs.getString("district"),
                         rs.getString("division"),
-                        rs.getString("jsc_school"),
-                        rs.getString("jsc_year"),
-                        rs.getString("jsc_board"),
-                        rs.getString("jsc_gpa"),
-                        rs.getString("ssc_school"),
-                        rs.getString("ssc_year"),
-                        rs.getString("ssc_board"),
-                        rs.getString("ssc_gpa"),
-                        rs.getString("hsc_college"),
-                        rs.getString("hsc_year"),
-                        rs.getString("hsc_board"),
-                        rs.getString("hsc_gpa"),
-                        rs.getString("graduation_university"),
-                        rs.getString("graduation_department"),
-                        rs.getString("graduation_year"),
-                        rs.getString("graduation_cgpa"),
+                        rs.getString("jscSchool"),
+                        rs.getString("jscYear"),
+                        rs.getString("jscBoard"),
+                        rs.getString("jscGpa"),
+                        rs.getString("sscSchool"),
+                        rs.getString("sscYear"),
+                        rs.getString("sscBoard"),
+                        rs.getString("sscGpa"),
+                        rs.getString("hscCollege"),
+                        rs.getString("hscYear"),
+                        rs.getString("hscBoard"),
+                        rs.getString("hscGpa"),
+                        rs.getString("graduationUniversity"),
+                        rs.getString("graduationDepartment"),
+                        rs.getString("graduationYear"),
+                        rs.getString("graduationCgpa"),
                         skills,
-                        experience,
-                        projects
+                        exp,
+                        pro
                 );
-
-                cvList.add(info);
+                list.add(i);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-
-        return cvList;
-    }
-
-    public boolean deleteCV(int id) {
-        String deleteSQL = "DELETE FROM cv_info WHERE id = ?";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(deleteSQL)) {
-
-            pstmt.setInt(1, id);
-            return pstmt.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean updateCV(Info info) {
-        String updateSQL = """
-                UPDATE cv_info SET
-                    full_name=?, father_name=?, mother_name=?, email=?, phone=?, photo_path=?,
-                    area=?, upazilla=?, district=?, division=?,
-                    jsc_school=?, jsc_year=?, jsc_board=?, jsc_gpa=?,
-                    ssc_school=?, ssc_year=?, ssc_board=?, ssc_gpa=?,
-                    hsc_college=?, hsc_year=?, hsc_board=?, hsc_gpa=?,
-                    graduation_university=?, graduation_department=?, graduation_year=?, graduation_cgpa=?,
-                    skills=?, experience=?, projects=?
-                WHERE id=?
-                """;
-
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(updateSQL)) {
-
-            pstmt.setString(1, info.getFullName());
-            pstmt.setString(2, info.getFatherName());
-            pstmt.setString(3, info.getMotherName());
-            pstmt.setString(4, info.getEmail());
-            pstmt.setString(5, info.getPhone());
-            pstmt.setString(6, info.getPhotoPath());
-            pstmt.setString(7, info.getArea());
-            pstmt.setString(8, info.getUpazilla());
-            pstmt.setString(9, info.getDistrict());
-            pstmt.setString(10, info.getDivision());
-            pstmt.setString(11, info.getJscSchool());
-            pstmt.setString(12, info.getJscYear());
-            pstmt.setString(13, info.getJscBoard());
-            pstmt.setString(14, info.getJscGpa());
-            pstmt.setString(15, info.getSscSchool());
-            pstmt.setString(16, info.getSscYear());
-            pstmt.setString(17, info.getSscBoard());
-            pstmt.setString(18, info.getSscGpa());
-            pstmt.setString(19, info.getHscCollege());
-            pstmt.setString(20, info.getHscYear());
-            pstmt.setString(21, info.getHscBoard());
-            pstmt.setString(22, info.getHscGpa());
-            pstmt.setString(23, info.getGraduationUniversity());
-            pstmt.setString(24, info.getGraduationDepartment());
-            pstmt.setString(25, info.getGraduationYear());
-            pstmt.setString(26, info.getGraduationCgpa());
-            pstmt.setString(27, String.join(",", info.getSkills()));
-            pstmt.setString(28, String.join(",", info.getExperience()));
-            pstmt.setString(29, String.join(",", info.getProjects()));
-            pstmt.setInt(30, info.getId());
-
-            return pstmt.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        return list;
     }
 }
