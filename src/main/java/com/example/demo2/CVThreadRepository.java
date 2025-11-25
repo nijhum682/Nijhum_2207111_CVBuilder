@@ -1,33 +1,21 @@
 package com.example.demo2;
 
 import javafx.concurrent.Task;
-
 import java.util.List;
 import java.util.function.Consumer;
 
 public class CVThreadRepository {
-    private final CVDatabaseHelper dbHelper;
+    private final DatabaseHelper dbHelper;
 
     public CVThreadRepository() {
-        dbHelper = new CVDatabaseHelper();
+        dbHelper = new DatabaseHelper();
     }
 
     public void insertCVAsync(Info info, Consumer<Boolean> callback) {
         Task<Boolean> task = new Task<>() {
             @Override
             protected Boolean call() {
-                return dbHelper.insertCV(info);
-            }
-        };
-        task.setOnSucceeded(e -> callback.accept(task.getValue()));
-        new Thread(task).start();
-    }
-
-    public void updateCVAsync(Info info, Consumer<Boolean> callback) {
-        Task<Boolean> task = new Task<>() {
-            @Override
-            protected Boolean call() {
-                return dbHelper.updateCV(info);
+                return dbHelper.insert(info) != null;
             }
         };
         task.setOnSucceeded(e -> callback.accept(task.getValue()));

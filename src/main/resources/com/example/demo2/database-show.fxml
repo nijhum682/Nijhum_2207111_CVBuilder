@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
@@ -14,7 +13,6 @@
     </padding>
 
     <TableView fx:id="cvTable" VBox.vgrow="ALWAYS">
-
         <columns>
             <TableColumn fx:id="colId" text="ID" prefWidth="40"/>
             <TableColumn fx:id="colFullName" text="Full Name" prefWidth="120"/>
@@ -28,8 +26,7 @@
             <TableColumn fx:id="colSkills" text="Skills" prefWidth="150"/>
             <TableColumn fx:id="colExperience" text="Experience" prefWidth="150"/>
             <TableColumn fx:id="colProjects" text="Projects" prefWidth="150"/>
+            <TableColumn fx:id="colDelete" text="Delete" prefWidth="80"/>
         </columns>
-
     </TableView>
-
 </VBox>

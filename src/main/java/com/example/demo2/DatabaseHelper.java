@@ -41,9 +41,9 @@ public class DatabaseHelper {
                     "experience TEXT," +
                     "projects TEXT" +
                     ")";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.execute();
-            stmt.close();
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.execute();
+            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +53,7 @@ public class DatabaseHelper {
         String sql = "INSERT INTO info (fullName,fatherName,motherName,email,phone,photoPath,area,upazilla,district,division," +
                 "jscSchool,jscYear,jscBoard,jscGpa,sscSchool,sscYear,sscBoard,sscGpa,hscCollege,hscYear,hscBoard,hscGpa," +
                 "graduationUniversity,graduationDepartment,graduationYear,graduationCgpa,skills,experience,projects) " +
-                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -88,40 +88,41 @@ public class DatabaseHelper {
             stmt.setString(29, String.join(",", i.getProjects()));
 
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
-            if (rs.next()) {
-                return new Info(
-                        rs.getInt(1),
-                        i.getFullName(),
-                        i.getFatherName(),
-                        i.getMotherName(),
-                        i.getEmail(),
-                        i.getPhone(),
-                        i.getPhotoPath(),
-                        i.getArea(),
-                        i.getUpazilla(),
-                        i.getDistrict(),
-                        i.getDivision(),
-                        i.getJscSchool(),
-                        i.getJscYear(),
-                        i.getJscBoard(),
-                        i.getJscGpa(),
-                        i.getSscSchool(),
-                        i.getSscYear(),
-                        i.getSscBoard(),
-                        i.getSscGpa(),
-                        i.getHscCollege(),
-                        i.getHscYear(),
-                        i.getHscBoard(),
-                        i.getHscGpa(),
-                        i.getGraduationUniversity(),
-                        i.getGraduationDepartment(),
-                        i.getGraduationYear(),
-                        i.getGraduationCgpa(),
-                        new ArrayList<>(i.getSkills()),
-                        new ArrayList<>(i.getExperience()),
-                        new ArrayList<>(i.getProjects())
-                );
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return new Info(
+                            rs.getInt(1),
+                            i.getFullName(),
+                            i.getFatherName(),
+                            i.getMotherName(),
+                            i.getEmail(),
+                            i.getPhone(),
+                            i.getPhotoPath(),
+                            i.getArea(),
+                            i.getUpazilla(),
+                            i.getDistrict(),
+                            i.getDivision(),
+                            i.getJscSchool(),
+                            i.getJscYear(),
+                            i.getJscBoard(),
+                            i.getJscGpa(),
+                            i.getSscSchool(),
+                            i.getSscYear(),
+                            i.getSscBoard(),
+                            i.getSscGpa(),
+                            i.getHscCollege(),
+                            i.getHscYear(),
+                            i.getHscBoard(),
+                            i.getHscGpa(),
+                            i.getGraduationUniversity(),
+                            i.getGraduationDepartment(),
+                            i.getGraduationYear(),
+                            i.getGraduationCgpa(),
+                            new ArrayList<>(i.getSkills()),
+                            new ArrayList<>(i.getExperience()),
+                            new ArrayList<>(i.getProjects())
+                    );
+                }
             }
             return null;
         } catch (Exception e) {
@@ -129,7 +130,7 @@ public class DatabaseHelper {
         }
     }
 
-    public List<Info> getAll() {
+    public List<Info> getAllCVs() {
         List<Info> list = new ArrayList<>();
         String sql = "SELECT * FROM info";
         try (Connection conn = DriverManager.getConnection(URL);
@@ -181,7 +182,7 @@ public class DatabaseHelper {
         return list;
     }
 
-    public boolean deleteById(int id) {
+    public boolean deleteCV(int id) {
         String sql = "DELETE FROM info WHERE id = ?";
         try (Connection conn = DriverManager.getConnection(URL);
              PreparedStatement stmt = conn.prepareStatement(sql)) {
