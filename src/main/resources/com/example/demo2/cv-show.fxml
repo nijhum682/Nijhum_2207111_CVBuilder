@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <GridPane alignment="CENTER" hgap="20" prefHeight="900" prefWidth="700" vgap="18" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.CvController">
 
@@ -18,7 +19,7 @@
       <ColumnConstraints minWidth="350.0" />
     </columnConstraints>
 
-    <Label alignment="CENTER" style="-fx-font-size:32px; -fx-font-weight:bold;" text="CURRICULAM VITAE" GridPane.columnSpan="2" GridPane.rowIndex="0">
+    <Label alignment="CENTER" prefHeight="47.0" prefWidth="677.0" style="-fx-font-size:32px; -fx-font-weight:bold;" text="CURRICULAM VITAE" GridPane.columnSpan="2" GridPane.rowIndex="0">
         <GridPane.margin><Insets top="20" /></GridPane.margin>
     </Label>
 
@@ -121,7 +122,10 @@
             </Label>
         </VBox>
     </VBox>
-   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showCV" prefHeight="26.0" prefWidth="320.0" text="Show ALL CV" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showCV" prefHeight="45.0" prefWidth="301.0" text="Show ALL CVs" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <font>
+         <Font name="System Bold" size="18.0" />
+      </font></Button>
 
     <rowConstraints>
         <RowConstraints />
