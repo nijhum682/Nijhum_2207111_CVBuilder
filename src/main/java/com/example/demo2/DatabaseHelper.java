@@ -192,4 +192,46 @@ public class DatabaseHelper {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean updateCV(Info i) {
+        String sql = "UPDATE info SET fullName=?, fatherName=?, motherName=?, email=?, phone=?, photoPath=?, area=?, upazilla=?, district=?, division=?, jscSchool=?, jscYear=?, jscBoard=?, jscGpa=?, sscSchool=?, sscYear=?, sscBoard=?, sscGpa=?, hscCollege=?, hscYear=?, hscBoard=?, hscGpa=?, graduationUniversity=?, graduationDepartment=?, graduationYear=?, graduationCgpa=?, skills=?, experience=?, projects=? WHERE id=?";
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, i.getFullName());
+            stmt.setString(2, i.getFatherName());
+            stmt.setString(3, i.getMotherName());
+            stmt.setString(4, i.getEmail());
+            stmt.setString(5, i.getPhone());
+            stmt.setString(6, i.getPhotoPath());
+            stmt.setString(7, i.getArea());
+            stmt.setString(8, i.getUpazilla());
+            stmt.setString(9, i.getDistrict());
+            stmt.setString(10, i.getDivision());
+            stmt.setString(11, i.getJscSchool());
+            stmt.setString(12, i.getJscYear());
+            stmt.setString(13, i.getJscBoard());
+            stmt.setString(14, i.getJscGpa());
+            stmt.setString(15, i.getSscSchool());
+            stmt.setString(16, i.getSscYear());
+            stmt.setString(17, i.getSscBoard());
+            stmt.setString(18, i.getSscGpa());
+            stmt.setString(19, i.getHscCollege());
+            stmt.setString(20, i.getHscYear());
+            stmt.setString(21, i.getHscBoard());
+            stmt.setString(22, i.getHscGpa());
+            stmt.setString(23, i.getGraduationUniversity());
+            stmt.setString(24, i.getGraduationDepartment());
+            stmt.setString(25, i.getGraduationYear());
+            stmt.setString(26, i.getGraduationCgpa());
+            stmt.setString(27, String.join(",", i.getSkills()));
+            stmt.setString(28, String.join(",", i.getExperience()));
+            stmt.setString(29, String.join(",", i.getProjects()));
+            stmt.setInt(30, i.getId());
+
+            return stmt.executeUpdate() > 0;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

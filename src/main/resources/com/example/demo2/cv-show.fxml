@@ -19,7 +19,7 @@
       <ColumnConstraints minWidth="350.0" />
     </columnConstraints>
 
-    <Label alignment="CENTER" prefHeight="47.0" prefWidth="677.0" style="-fx-font-size:32px; -fx-font-weight:bold;" text="CURRICULAM VITAE" GridPane.columnSpan="2" GridPane.rowIndex="0">
+    <Label alignment="TOP_RIGHT" prefHeight="47.0" prefWidth="674.0" style="-fx-font-size:32px; -fx-font-weight:bold;" text="CURRICULAM VITAE" GridPane.columnSpan="2" GridPane.rowIndex="0">
         <GridPane.margin><Insets top="20" /></GridPane.margin>
     </Label>
 
@@ -72,9 +72,8 @@
             </HBox>
         </VBox>
     </VBox>
-
     <VBox alignment="TOP_RIGHT" GridPane.columnIndex="2" GridPane.rowIndex="1">
-        <ImageView fx:id="photoView" fitHeight="160" fitWidth="160" preserveRatio="true">
+        <ImageView fx:id="photoView" fitHeight="190" fitWidth="190" preserveRatio="true">
             <VBox.margin><Insets right="40" top="10" /></VBox.margin>
         </ImageView>
     </VBox>

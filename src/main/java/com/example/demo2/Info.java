@@ -3,17 +3,16 @@ package com.example.demo2;
 import java.util.List;
 
 public class Info {
-    private final int id;
-    private final String fullName, fatherName, motherName, email, phone, photoPath;
-    private final String area, upazilla, district, division;
-    private final String jscSchool, jscYear, jscBoard, jscGpa;
-    private final String sscSchool, sscYear, sscBoard, sscGpa;
-    private final String hscCollege, hscYear, hscBoard, hscGpa;
-    private final String graduationUniversity, graduationDepartment, graduationYear, graduationCgpa;
-    private final List<String> skills, experience, projects;
+    private int id;
+    private String fullName, fatherName, motherName, email, phone, photoPath;
+    private String area, upazilla, district, division;
+    private String jscSchool, jscYear, jscBoard, jscGpa;
+    private String sscSchool, sscYear, sscBoard, sscGpa;
+    private String hscCollege, hscYear, hscBoard, hscGpa;
+    private String graduationUniversity, graduationDepartment, graduationYear, graduationCgpa;
+    private List<String> skills, experience, projects;
 
-    public Info(int id,
-                String fullName, String fatherName, String motherName, String email, String phone, String photoPath,
+    public Info(int id, String fullName, String fatherName, String motherName, String email, String phone, String photoPath,
                 String area, String upazilla, String district, String division,
                 String jscSchool, String jscYear, String jscBoard, String jscGpa,
                 String sscSchool, String sscYear, String sscBoard, String sscGpa,
@@ -82,4 +81,34 @@ public class Info {
     public List<String> getSkills() { return skills; }
     public List<String> getExperience() { return experience; }
     public List<String> getProjects() { return projects; }
+
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setFatherName(String fatherName) { this.fatherName = fatherName; }
+    public void setMotherName(String motherName) { this.motherName = motherName; }
+    public void setEmail(String email) { this.email = email; }
+    public void setPhone(String phone) { this.phone = phone; }
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
+    public void setArea(String area) { this.area = area; }
+    public void setUpazilla(String upazilla) { this.upazilla = upazilla; }
+    public void setDistrict(String district) { this.district = district; }
+    public void setDivision(String division) { this.division = division; }
+    public void setJscSchool(String jscSchool) { this.jscSchool = jscSchool; }
+    public void setJscYear(String jscYear) { this.jscYear = jscYear; }
+    public void setJscBoard(String jscBoard) { this.jscBoard = jscBoard; }
+    public void setJscGpa(String jscGpa) { this.jscGpa = jscGpa; }
+    public void setSscSchool(String sscSchool) { this.sscSchool = sscSchool; }
+    public void setSscYear(String sscYear) { this.sscYear = sscYear; }
+    public void setSscBoard(String sscBoard) { this.sscBoard = sscBoard; }
+    public void setSscGpa(String sscGpa) { this.sscGpa = sscGpa; }
+    public void setHscCollege(String hscCollege) { this.hscCollege = hscCollege; }
+    public void setHscYear(String hscYear) { this.hscYear = hscYear; }
+    public void setHscBoard(String hscBoard) { this.hscBoard = hscBoard; }
+    public void setHscGpa(String hscGpa) { this.hscGpa = hscGpa; }
+    public void setGraduationUniversity(String graduationUniversity) { this.graduationUniversity = graduationUniversity; }
+    public void setGraduationDepartment(String graduationDepartment) { this.graduationDepartment = graduationDepartment; }
+    public void setGraduationYear(String graduationYear) { this.graduationYear = graduationYear; }
+    public void setGraduationCgpa(String graduationCgpa) { this.graduationCgpa = graduationCgpa; }
+    public void setSkills(List<String> skills) { this.skills = skills; }
+    public void setExperience(List<String> experience) { this.experience = experience; }
+    public void setProjects(List<String> projects) { this.projects = projects; }
 }

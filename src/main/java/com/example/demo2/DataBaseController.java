@@ -4,6 +4,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,7 +14,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class DataBaseController {
@@ -32,6 +38,7 @@ public class DataBaseController {
     @FXML private TableColumn<Info, String> colPhotoPath;
     @FXML private TableColumn<Info, Void> colDelete;
     @FXML private TableColumn<Info, Void> colPreview;
+    @FXML private TableColumn<Info, Void> colUpdate;
 
     private DatabaseHelper helper;
 
@@ -52,11 +59,13 @@ public class DataBaseController {
         setVerticalSkills();
         setVerticalExperience();
         setVerticalProjects();
+
         addDeleteButtonToTable();
         addPreviewButtonToTable();
+        addUpdateButtonToTable();
+
         loadTableData();
     }
-
 
     private void setVerticalAddress() {
         colAddress.setCellFactory(col -> new TableCell<>() {
@@ -147,14 +156,40 @@ public class DataBaseController {
         });
     }
 
+    private void addUpdateButtonToTable() {
+        colUpdate.setCellFactory(param -> new TableCell<>() {
+            private final Button btn = new Button("Update");
+            {
+                btn.setOnAction(e -> {
+                    Info info = getTableView().getItems().get(getIndex());
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("update-form.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(loader.load()));
+                        stage.initModality(Modality.APPLICATION_MODAL);
+                        UpdateFormController controller = loader.getController();
+                        controller.setInfo(info, () -> loadTableData()); // fixed here
+                        stage.showAndWait();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+            }
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : btn);
+            }
+        });
+    }
     private void showPreviewCV(Info info) {
         Dialog<Void> dialog = new Dialog<>();
         dialog.setTitle("CV Preview");
 
         VBox left = new VBox(3,
                 createTitleLabel("Full Name: "), new Label(info.getFullName()),
-                createTitleLabel("Father Name: "), new Label(info.getFatherName()),
-                createTitleLabel("Mother Name: "), new Label(info.getMotherName()),
+                createTitleLabel("Father's Name: "), new Label(info.getFatherName()),
+                createTitleLabel("Mother's Name: "), new Label(info.getMotherName()),
                 createTitleLabel("Email: "), new Label(info.getEmail()),
                 createTitleLabel("Phone: "), new Label(info.getPhone()),
                 createTitleLabel("Address:"),

@@ -13,12 +13,16 @@
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
- <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="1266.0" text=" All Cvs are here!" textAlignment="JUSTIFY">
-      <font>
-         <Font name="System Bold" size="18.0" />
-      </font>
-   </Button>
-   <ButtonBar prefHeight="27.0" prefWidth="1182.0" />
+
+    <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false"
+            prefHeight="40.0" maxWidth="Infinity"
+            text=" All Cvs are here!" textAlignment="JUSTIFY">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Button>
+
+    <ButtonBar prefHeight="27.0" prefWidth="1182.0" />
 
     <TableView fx:id="cvTable" prefHeight="699.0" prefWidth="1182.0" VBox.vgrow="ALWAYS">
         <columns>
@@ -34,8 +38,10 @@
             <TableColumn fx:id="colSkills" prefWidth="150" text="Skills" />
             <TableColumn fx:id="colExperience" prefWidth="150" text="Experience" />
             <TableColumn fx:id="colProjects" prefWidth="150" text="Projects" />
+            <TableColumn fx:id="colUpdate" prefWidth="80" text="Update" />
             <TableColumn fx:id="colPreview" prefWidth="80" text="Preview" />
             <TableColumn fx:id="colDelete" prefWidth="80" text="Delete" />
         </columns>
     </TableView>
+
 </VBox>

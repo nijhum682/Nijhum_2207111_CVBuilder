@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo2.UpdateFormController"
+            fitToWidth="true" fitToHeight="true" prefWidth="800" prefHeight="700">
+    <content>
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <Label text="Update CV" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <TextField fx:id="txtFullName" promptText="Full Name" prefWidth="750"/>
+            <TextField fx:id="txtFatherName" promptText="Father Name" prefWidth="750"/>
+            <TextField fx:id="txtMotherName" promptText="Mother Name" prefWidth="750"/>
+            <TextField fx:id="txtEmail" promptText="Email" prefWidth="750"/>
+            <TextField fx:id="txtPhone" promptText="Phone" prefWidth="750"/>
+            <TextField fx:id="txtPhotoPath" promptText="Photo Path" prefWidth="750"/>
+            <TextField fx:id="txtArea" promptText="Area" prefWidth="750"/>
+            <TextField fx:id="txtUpazilla" promptText="Upazilla" prefWidth="750"/>
+            <TextField fx:id="txtDistrict" promptText="District" prefWidth="750"/>
+            <TextField fx:id="txtDivision" promptText="Division" prefWidth="750"/>
+
+            <Label text="JSC Education" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtJscSchool" promptText="School" prefWidth="750"/>
+            <TextField fx:id="txtJscYear" promptText="Year" prefWidth="750"/>
+            <TextField fx:id="txtJscBoard" promptText="Board" prefWidth="750"/>
+            <TextField fx:id="txtJscGpa" promptText="GPA" prefWidth="750"/>
+
+            <Label text="SSC Education" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtSscSchool" promptText="School" prefWidth="750"/>
+            <TextField fx:id="txtSscYear" promptText="Year" prefWidth="750"/>
+            <TextField fx:id="txtSscBoard" promptText="Board" prefWidth="750"/>
+            <TextField fx:id="txtSscGpa" promptText="GPA" prefWidth="750"/>
+
+            <Label text="HSC Education" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtHscCollege" promptText="College" prefWidth="750"/>
+            <TextField fx:id="txtHscYear" promptText="Year" prefWidth="750"/>
+            <TextField fx:id="txtHscBoard" promptText="Board" prefWidth="750"/>
+            <TextField fx:id="txtHscGpa" promptText="GPA" prefWidth="750"/>
+
+            <Label text="Graduation" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="txtGraduationUniversity" promptText="University" prefWidth="750"/>
+            <TextField fx:id="txtGraduationDepartment" promptText="Department" prefWidth="750"/>
+            <TextField fx:id="txtGraduationYear" promptText="Year" prefWidth="750"/>
+            <TextField fx:id="txtGraduationCgpa" promptText="CGPA" prefWidth="750"/>
+
+            <TextField fx:id="txtSkills" promptText="Skills (comma-separated)" prefWidth="750"/>
+            <TextField fx:id="txtExperience" promptText="Experience (comma-separated)" prefWidth="750"/>
+            <TextField fx:id="txtProjects" promptText="Projects (comma-separated)" prefWidth="750"/>
+
+            <Button text="Submit" fx:id="btnSubmit" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" prefWidth="200"/>
+        </VBox>
+    </content>
+</ScrollPane>
